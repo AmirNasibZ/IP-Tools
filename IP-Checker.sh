@@ -16,7 +16,7 @@
 # Configuration
 # --------------------------
 # HetrixTools API Key (Get yours from: https://hetrixtools.com/dashboard/)
-HETRIX_API_KEY="b078a79257703ca7f018727863d66b94"
+HETRIX_API_KEY="YOUR_HETRIXTOOLS_API_KEY"
 
 # --------------------------
 # Global Variables
