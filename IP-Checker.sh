@@ -9,14 +9,14 @@
 # Author: Amir Nasib Zarrabi
 # Repository: https://github.com/yourusername/ip-checker
 # License: MIT
-# Version: 1.0.0
+# Version: 1.0.1
 # ==============================================
 
 # --------------------------
 # Configuration
 # --------------------------
-# HetrixTools API Key (Get yours from: https://hetrixtools.com/dashboard/)
-HETRIX_API_KEY="YOUR_HETRIXTOOLS_API_KEY"
+# HetrixTools API Key will be requested if not set
+HETRIX_API_KEY=""
 
 # --------------------------
 # Global Variables
@@ -28,6 +28,20 @@ declare -A IP
 # --------------------------
 # Functions
 # --------------------------
+
+function get_api_key() {
+    # Prompt user for HetrixTools API key if not set
+    if [ -z "$HETRIX_API_KEY" ]; then
+        echo -e "\n>>> HetrixTools API Key Required <<<"
+        echo "Please enter your HetrixTools API key (get it from: https://hetrixtools.com/dashboard/)"
+        read -p "API Key: " HETRIX_API_KEY
+        
+        if [ -z "$HETRIX_API_KEY" ]; then
+            echo "Error: API key cannot be empty!"
+            exit 1
+        fi
+    fi
+}
 
 function check_ip_filtering() {
     # Checks if IP is filtered/blocked in Iran using ArvanCloud's IP checker
@@ -101,6 +115,9 @@ echo "Starting IP Filter & Blacklist Checks..."
 echo "========================================"
 
 IP="$(hostname -I | awk '{print $1}')"
+
+# Get API key if not set
+get_api_key
 
 check_ip_filtering
 check_hetrixtools
