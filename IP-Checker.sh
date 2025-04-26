@@ -70,7 +70,7 @@ function check_hetrixtools() {
     echo "• Detected IP: $IP"
     echo "• Querying HetrixTools Blacklist Check API..."
 
-    RESULT=$(curl -s "https://api.hetrixtools.com/$HETRIX_API_KEY/blacklist-check/ipv4/$IP/")
+    RESULT=$(curl -s "https://api.hetrixtools.com/v2/$HETRIX_API_KEY/blacklist-check/ipv4/$IP/")
 
     if echo "$RESULT" | grep -q '"blacklisted_count":0'; then
         STATUS[hetrixtools]="✅"
