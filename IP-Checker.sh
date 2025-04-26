@@ -6,7 +6,7 @@
 # Description: A bash script to check if your server's IP is:
 #              1. Filtered/blocked in Iran (via ArvanCloud API)
 #              2. Blacklisted globally (via HetrixTools API)
-# Author: Your Name
+# Author: Amir Nasib Zarrabi
 # Repository: https://github.com/yourusername/ip-checker
 # License: MIT
 # Version: 1.0.0
