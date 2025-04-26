@@ -16,13 +16,14 @@
 # Configuration
 # --------------------------
 # HetrixTools API Key (Get yours from: https://hetrixtools.com/dashboard/)
-HETRIX_API_KEY="YOUR_HETRIXTOOLS_API_KEY"
+HETRIX_API_KEY="b078a79257703ca7f018727863d66b94"
 
 # --------------------------
 # Global Variables
 # --------------------------
 declare -A STATUS  # Stores check statuses (✅/❌)
 declare -A LOG     # Stores detailed error messages
+declare -A IP
 
 # --------------------------
 # Functions
@@ -33,7 +34,6 @@ function check_ip_filtering() {
     echo ">>> Checking IP Filtering / Iran Access <<<"
 
     # Get server's public IPv4 address
-    IP=$(curl -s4 ifconfig.me)
     if [[ -z "$IP" ]]; then
         STATUS[ip_check]="❌"
         LOG[ip_check]="Failed to retrieve server IP."
@@ -61,7 +61,6 @@ function check_hetrixtools() {
     # Checks if IP is blacklisted using HetrixTools API
     echo ">>> Checking IP via HetrixTools <<<"
 
-    IP=$(curl -s4 ifconfig.me)
     if [[ -z "$IP" ]]; then
         STATUS[hetrixtools]="❌"
         LOG[hetrixtools]="Failed to retrieve server IP."
@@ -88,7 +87,7 @@ function show_summary() {
     echo ">>> IP Check Summary <<<"
     printf "\n%-25s %-8s %s\n" "Check" "Status" "Details"
     printf "%-25s %-8s %s\n" "-------------------------" "--------" "-------------------------"
-    
+
     for key in "${!STATUS[@]}"; do
         printf "%-25s %-8s %s\n" "$key" "${STATUS[$key]}" "${LOG[$key]}"
     done
@@ -100,6 +99,8 @@ function show_summary() {
 clear
 echo "Starting IP Filter & Blacklist Checks..."
 echo "========================================"
+
+IP="$(hostname -I | awk '{print $1}')"
 
 check_ip_filtering
 check_hetrixtools
