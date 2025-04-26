@@ -36,17 +36,3 @@ A bash script to check if your server's IP is:
 
 ## API Keys
 ● Get HetrixTools API key from: https://hetrixtools.com/dashboard/
-
-## License
-MIT - See LICENSE file
-
-2. **LICENSE** (MIT License template)
-3. **.gitignore**:
-
-## Ignore temporary files
-*.tmp
-*.log
-
-## Ignore IDE specific files
-.vscode/
-.idea/
