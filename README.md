@@ -17,3 +17,36 @@ A bash script to check if your server's IP is:
    ```bash
    git clone https://github.com/yourusername/ip-checker.git
    cd ip-checker
+
+2. Make the script executable:
+   ```bash
+   chmod +x ip_checker.sh
+
+3. Edit the script to add your HetrixTools API key:
+   ```bash
+   nano ip_checker.sh
+
+4. Run the script:
+   ```bash
+   ./ip_checker.sh
+
+## Requirements
+● curl - For API requests
+● bash - Shell environment
+
+## API Keys
+● Get HetrixTools API key from: https://hetrixtools.com/dashboard/
+
+## License
+MIT - See LICENSE file
+
+2. **LICENSE** (MIT License template)
+3. **.gitignore**:
+
+## Ignore temporary files
+*.tmp
+*.log
+
+## Ignore IDE specific files
+.vscode/
+.idea/
